@@ -1,0 +1,13 @@
+.Flex {
+  display: flex;
+  flex-direction: var(--flex-direction, 'row');
+  align-items: var(--align-items, 'stretch');
+  justify-content: var(--justify-content, 'start');
+  flex-wrap: var(--wrap, 'nowrap');
+  gap: var(--gap, 0);
+  width: var(--width, auto);
+  height: var(--height, auto);
+  padding: var(--padding, 0);
+  margin: var(--margin, auto);
+  max-width: var(--max-width);
+}
