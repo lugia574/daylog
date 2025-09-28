@@ -3,17 +3,37 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "main": "electron/out/index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "watch:main": "tsc -w -p electron/tsconfig.json",
+    "dev:electron": "wait-on http://localhost:5173 && cross-env VITE_DEV_SERVER_URL=http://localhost:5173 electron .",
+    "dev": "concurrently -k \"vite\" \"npm:watch:main\" \"npm:dev:electron\"",
+    "build:renderer": "vite build",
+    "build:main": "tsc -p electron/tsconfig.json",
+    "build": "npm run build:renderer && npm run build:main",
+    "dist": "npm run build && electron-builder"
+  },
+  "build": {
+    "appId": "co.yourname.daylog",
+    "productName": "Daylog",
+    "asar": true,
+    "files": [
+      "dist/**",
+      "electron/out/**",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "target": "nsis"
+    }
   },
   "dependencies": {
     "classnames": "^2.5.1",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-unused-imports": "^4.2.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "sass": "^1.93.0",
@@ -29,14 +49,16 @@
     "cross-env": "^10.0.0",
     "electron": "^38.1.2",
     "electron-builder": "^26.0.12",
-    "electron-is-dev": "^3.0.1",
     "eslint": "^9.36.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
+    "eslint-plugin-unused-imports": "^4.2.0",
     "globals": "^16.4.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.44.0",
     "vite": "^7.1.6",
-    "wait-on": "^9.0.1"
+    "wait-on": "^9.0.1",
+    "tsx": "^4.19.2"
   }
 }
