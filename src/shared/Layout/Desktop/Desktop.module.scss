@@ -1,0 +1,32 @@
+.DesktopLayout {
+  display: flex;
+  grid-template-areas:
+    'header'
+    'sidebarLeft main sidebarRight'
+    'footer';
+
+  grid-template-columns: auto 1fr auto;
+
+  flex-direction: column;
+  width: 100vw;
+
+  .HeaderLayout {
+    grid-area: header;
+    margin: 0;
+  }
+
+  .MainLayout {
+    grid-area: main;
+  }
+
+  .FooterLayout {
+    grid-area: footer;
+  }
+
+  .SidebarLeft {
+    grid-area: sidebarLeft;
+  }
+  .SidebarRight {
+    grid-area: sidebarRight;
+  }
+}
