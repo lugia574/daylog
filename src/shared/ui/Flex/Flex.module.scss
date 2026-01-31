@@ -1,13 +1,22 @@
+// Flex.module.scss
+
 .Flex {
   display: flex;
-  flex-direction: var(--flex-direction, 'row');
-  align-items: var(--align-items, 'stretch');
-  justify-content: var(--justify-content, 'start');
-  flex-wrap: var(--wrap, 'nowrap');
-  gap: var(--gap, 0);
-  width: var(--width, auto);
-  height: var(--height, auto);
-  padding: var(--padding, 0);
-  margin: var(--margin, auto);
-  max-width: var(--max-width);
+  box-sizing: border-box;
+
+  // Props로 주입된 CSS Variables를 매핑합니다.
+  // 형식을 var(--변수명, 기본값) 으로 설정하여 값이 없을 경우 안전하게 처리합니다.
+  width: var(--flex-width, auto);
+  height: var(--flex-height, auto);
+
+  flex-direction: var(--flex-direction, row);
+  flex-wrap: var(--flex-wrap, nowrap);
+
+  justify-content: var(--flex-justify, flex-start);
+  align-items: var(--flex-align, stretch);
+
+  gap: var(--flex-gap, 0);
+
+  // 필요한 경우 추가적인 스타일링 가능
+  min-width: 0; // Flex 자식 요소 넘침 방지 팁
 }

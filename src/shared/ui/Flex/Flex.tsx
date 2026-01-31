@@ -1,64 +1,88 @@
-import type { CSSAlign } from '@/shared/types/css/CSSAlign';
-import type { CSSJustify } from '@/shared/types/css/CSSJustify';
-import type { CSSLength } from '@/shared/types/css/CSSLength';
-import type { SpacingSize } from '@/shared/types/css/SpacingSize';
-import React from 'react';
-import styles from './Flex.module.scss';
-import type { CSSDirection } from '@/shared/types/css/CSSDirection';
-import type { CSSWrap } from '@/shared/types/css/CSSWrap';
-import type { CSSVariables } from '@/shared/types/css/CSSVariables';
-import { toCssUnit } from '@/shared/utils';
-import { toCssSacing } from '@/shared/utils/css/toCssPadding';
+import type { CSSProperties, ElementType } from 'react';
+import React, { forwardRef } from 'react';
 import classNames from 'classnames';
+import styles from './Flex.module.scss';
 
-export type FlexProps = React.HTMLAttributes<HTMLDivElement> & {
-  children: React.ReactNode;
-  justify?: CSSJustify;
-  direction?: CSSDirection;
-  align?: CSSAlign;
-  width?: CSSLength;
-  height?: CSSLength;
-  maxWidth?: CSSLength;
-  padding?: SpacingSize;
-  margin?: SpacingSize;
-  gap?: SpacingSize;
-  wrap: CSSWrap;
-};
+// 유틸리티 import
+import type { SpacingSize } from '@/shared/types/css/SpacingSize';
+import { toCssUnit } from '@/shared/utils';
+import { toCssSpacing } from '@/shared/utils/css/toCssPadding';
 
-const Flex = ({
-  children,
-  direction,
-  align,
-  justify,
-  gap,
-  wrap,
-  maxWidth,
-  width,
-  height,
-  style,
-  className,
-  padding,
-  margin,
-  ...props
-}: FlexProps) => {
-  const cssVariables: CSSVariables = {
-    '--flex-direction': direction,
-    '--align-items': align,
-    '--justify-content': justify,
-    '--wrap': wrap,
-    '--gap': toCssSacing(gap),
-    '--width': toCssUnit(width),
-    '--height': toCssUnit(height),
-    '--padding': toCssSacing(padding),
-    '--margin': toCssSacing(margin),
-    '--max-width': toCssUnit(maxWidth),
-  };
+// CSS Variable 타입 확장
+interface CSSCustomProperties extends CSSProperties {
+  '--flex-width'?: string | number;
+  '--flex-height'?: string | number;
+  '--flex-direction'?: string;
+  '--flex-justify'?: string;
+  '--flex-align'?: string;
+  '--flex-gap'?: string | number;
+  '--flex-wrap'?: string;
+  '--flex-padding'?: string; // 추가됨
+}
 
-  return (
-    <div {...props} className={classNames(styles.Flex, className)} style={{ ...cssVariables, ...style }}>
-      {children}
-    </div>
-  );
-};
+interface FlexProps extends React.HTMLAttributes<HTMLElement> {
+  as?: ElementType;
+  children?: React.ReactNode;
+
+  width?: string | number;
+  height?: string | number;
+  direction?: CSSProperties['flexDirection'];
+  justify?: CSSProperties['justifyContent'];
+  align?: CSSProperties['alignItems'];
+  gap?: string | number;
+  wrap?: CSSProperties['flexWrap'];
+
+  // padding prop 추가 (숫자, 문자열, 혹은 객체)
+  padding?: SpacingSize | number | string;
+}
+
+const Flex = forwardRef<HTMLElement, FlexProps>(
+  (
+    {
+      as: Component = 'div',
+      children,
+      className,
+      width,
+      height,
+      direction,
+      justify,
+      align,
+      gap,
+      wrap,
+      padding, // destructuring
+      style,
+      ...props
+    },
+    ref
+  ) => {
+    const cssVariables: CSSCustomProperties = {
+      '--flex-width': toCssUnit(width || 'auto'), // width/height도 toCssUnit 활용 추천
+      '--flex-height': toCssUnit(height || 'auto'),
+      '--flex-direction': direction,
+      '--flex-justify': justify,
+      '--flex-align': align,
+      '--flex-gap': toCssUnit(gap || 0),
+      '--flex-wrap': wrap,
+
+      // Padding 계산 로직 적용
+      '--flex-padding': toCssSpacing(padding),
+
+      ...style,
+    };
+
+    return (
+      <Component
+        ref={ref}
+        className={classNames(styles.Flex, className)}
+        style={cssVariables as CSSProperties}
+        {...props}
+      >
+        {children}
+      </Component>
+    );
+  }
+);
+
+Flex.displayName = 'Flex';
 
 export default Flex;

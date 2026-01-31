@@ -1,9 +1,9 @@
 import type { SpacingSize } from '@/shared/types/css/SpacingSize';
 import { toCssUnit } from './toCssUnit';
 
-export const toCssSacing = (sizing: SpacingSize | number = 0): string => {
+export const toCssSpacing = (sizing: SpacingSize | number | string = 0): string => {
   if (typeof sizing === 'number' || typeof sizing === 'string') {
-    return toCssUnit(sizing as number);
+    return toCssUnit(sizing);
   }
 
   const px = sizing.x != null ? toCssUnit(sizing.x) : '0px';
@@ -19,5 +19,6 @@ export const toCssSacing = (sizing: SpacingSize | number = 0): string => {
   if (sizing.l != null) left = toCssUnit(sizing.l);
   if (sizing.r != null) right = toCssUnit(sizing.r);
 
+  // CSS padding shorthand 순서: top right bottom left
   return `${top} ${right} ${bottom} ${left}`;
 };
