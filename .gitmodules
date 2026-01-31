@@ -1,0 +1,3 @@
+[submodule "src/shared/ui"]
+	path = src/shared/ui
+	url = https://github.com/lugia574/ui-kit.git
