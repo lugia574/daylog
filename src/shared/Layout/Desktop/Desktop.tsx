@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import type { ReactNode } from 'react';
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import Footer from './components/Footer/Footer';
@@ -7,7 +7,7 @@ import SidebarRight from './components/SidebarRight/SidebarRight';
 import styles from './Desktop.module.scss';
 
 type DesktopProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 const Desktop = ({ children }: DesktopProps) => <div className={styles.DesktopLayout}>{children}</div>;

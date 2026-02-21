@@ -1,9 +1,10 @@
-import React from 'react';
+﻿import type { ReactNode } from 'react';
+import styles from '../../Desktop.module.scss';
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
-const Header = ({ children }: Props) => <header>{children}</header>;
+const Header = ({ children }: Props) => <header className={styles.HeaderLayout}>{children}</header>;
 
 export default Header;

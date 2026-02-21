@@ -1,0 +1,48 @@
+﻿.Widget {
+  width: 100%;
+  border-radius: 18px;
+  padding: 18px;
+  background: rgba(236, 244, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+.Title {
+  margin: 0;
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--White1);
+}
+
+.MetaRow {
+  border-radius: 10px;
+  padding: 6px 8px;
+  // background: rgba(255, 255, 255, 0.62);
+  color: var(--White1);
+}
+
+.MonthLabel,
+.SelectedLabel {
+  margin: 0;
+  // color: #435f88;
+  color: var(--White1);
+  font-size: 0.92rem;
+}
+
+.WeekDay {
+  color: #7087ac;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.DayButton {
+  width: 100%;
+}
+
+.Today {
+  box-shadow: inset 0 0 0 2px rgba(53, 89, 151, 0.34);
+}
+
+.OutOfMonth {
+  opacity: 0.45;
+}

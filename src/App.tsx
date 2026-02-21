@@ -1,3 +1,5 @@
-const  App = () => <span>Daylog</span>
+﻿import AppDisplay from '@/Display';
+
+const App = () => <AppDisplay />;
 
 export default App;

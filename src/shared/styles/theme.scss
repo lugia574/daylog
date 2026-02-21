@@ -23,14 +23,14 @@
   --Green2: #{$Green2};
 
   /* Primary (Brand Orange) */
-  --Primary1: #{$Primary1};
-  --Primary2: #{$Primary2};
-  --Primary3: #{$Primary3};
-  --Primary4: #{$Primary4};
-  --Primary5: #{$Primary5};
+  // --Primary1: #{$Primary1};
+  // --Primary2: #{$Primary2};
+  // --Primary3: #{$Primary3};
+  // --Primary4: #{$Primary4};
+  // --Primary5: #{$Primary5};
 
-  --Gradient1: #{$Gradient1};
-  --Gradient2: #{$Gradient2};
+  // --Gradient1: #{$Gradient1};
+  // --Gradient2: #{$Gradient2};
 
   color-scheme: light;
 }
@@ -61,11 +61,11 @@
     --Green2: #{$Green2};
 
     /* Primary (Brand Orange) — 동일 유지 */
-    --Primary1: #{$Primary1};
-    --Primary2: #{$Primary2};
-    --Primary3: #{$Primary3};
-    --Primary4: #{$Primary4};
-    --Primary5: #{$Primary5};
+    // --Primary1: #{$Primary1};
+    // --Primary2: #{$Primary2};
+    // --Primary3: #{$Primary3};
+    // --Primary4: #{$Primary4};
+    // --Primary5: #{$Primary5};
 
     color-scheme: dark;
   }

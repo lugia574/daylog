@@ -1,14 +1,14 @@
+// electron/index.ts
 import * as electron from 'electron';
-const { app, BrowserWindow } = electron;
 import path from 'node:path';
+const { app, BrowserWindow } = electron;
+// 타입 위치에서는 네임스페이스로:
 let win = null;
 const create = () => {
     win = new BrowserWindow({
         width: 420,
         height: 640,
-        webPreferences: {
-            contextIsolation: true,
-        },
+        webPreferences: { contextIsolation: true },
     });
     const devUrl = process.env.VITE_DEV_SERVER_URL;
     if (devUrl)

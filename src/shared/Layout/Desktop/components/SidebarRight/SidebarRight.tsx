@@ -1,9 +1,10 @@
-import React from 'react';
+﻿import type { ReactNode } from 'react';
+import styles from '../../Desktop.module.scss';
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
-const SidebarRight = ({ children }: Props) => <div>{children}</div>;
+const SidebarRight = ({ children }: Props) => <aside className={styles.SidebarRightLayout}>{children}</aside>;
 
 export default SidebarRight;

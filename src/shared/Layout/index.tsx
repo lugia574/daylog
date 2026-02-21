@@ -1,5 +1,22 @@
-import React from 'react';
+﻿import type { ReactNode } from 'react';
+import Desktop from './Desktop/Desktop';
 
-const index = () => <div></div>;
+type DashboardLayoutProps = {
+  header: ReactNode;
+  sidebarLeft: ReactNode;
+  main: ReactNode;
+  sidebarRight: ReactNode;
+  footer: ReactNode;
+};
 
-export default index;
+const DashboardLayout = ({ header, sidebarLeft, main, sidebarRight, footer }: DashboardLayoutProps) => (
+  <Desktop>
+    <Desktop.Header>{header}</Desktop.Header>
+    <Desktop.SidebarLeft>{sidebarLeft}</Desktop.SidebarLeft>
+    <Desktop.Main>{main}</Desktop.Main>
+    <Desktop.SidebarRight>{sidebarRight}</Desktop.SidebarRight>
+    <Desktop.Footer>{footer}</Desktop.Footer>
+  </Desktop>
+);
+
+export default DashboardLayout;

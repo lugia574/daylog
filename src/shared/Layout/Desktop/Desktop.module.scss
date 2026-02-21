@@ -1,32 +1,47 @@
-.DesktopLayout {
-  display: flex;
+﻿.DesktopLayout {
+  display: grid;
   grid-template-areas:
-    'header'
+    'header header header'
     'sidebarLeft main sidebarRight'
-    'footer';
+    'footer footer footer';
+  grid-template-columns: minmax(260px, 320px) minmax(520px, 1fr) minmax(280px, 340px);
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  gap: 20px;
+  padding: 24px;
+  box-sizing: border-box;
+  background: var(--app-background);
+}
 
-  grid-template-columns: auto 1fr auto;
-
-  flex-direction: column;
-  width: 100vw;
-
-  .HeaderLayout {
-    grid-area: header;
-    margin: 0;
+@media (max-width: 1200px) {
+  .DesktopLayout {
+    grid-template-areas:
+      'header'
+      'main'
+      'sidebarLeft'
+      'sidebarRight'
+      'footer';
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    padding: 16px;
   }
+}
+.HeaderLayout {
+  grid-area: header;
+}
 
-  .MainLayout {
-    grid-area: main;
-  }
+.MainLayout {
+  grid-area: main;
+}
 
-  .FooterLayout {
-    grid-area: footer;
-  }
+.FooterLayout {
+  grid-area: footer;
+}
 
-  .SidebarLeft {
-    grid-area: sidebarLeft;
-  }
-  .SidebarRight {
-    grid-area: sidebarRight;
-  }
+.SidebarLeftLayout {
+  grid-area: sidebarLeft;
+}
+
+.SidebarRightLayout {
+  grid-area: sidebarRight;
 }

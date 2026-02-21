@@ -1,0 +1,30 @@
+﻿.Widget {
+  width: 100%;
+  padding: 18px;
+  border-radius: 18px;
+  // background: linear-gradient(155deg, rgba(22, 38, 62, 0.88), rgba(32, 50, 75, 0.74));
+  background: rgba(32, 50, 75, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #f8fbff;
+  backdrop-filter: blur(4px);
+}
+
+.Time {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 2.9rem);
+  letter-spacing: 0.03em;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.Date {
+  margin: 0;
+  color: rgba(248, 251, 255, 0.76);
+  font-size: 0.95rem;
+}
+
+.Greeting {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 500;
+}

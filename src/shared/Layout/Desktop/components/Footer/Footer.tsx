@@ -1,9 +1,10 @@
-import React from 'react';
+﻿import type { ReactNode } from 'react';
+import styles from '../../Desktop.module.scss';
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
-const Footer = ({ children }: Props) => <footer>{children}</footer>;
+const Footer = ({ children }: Props) => <footer className={styles.FooterLayout}>{children}</footer>;
 
 export default Footer;
